@@ -110,7 +110,6 @@ const tileIcons = [
           </li>
         </ul>
         <div class="drawer__cta">
-          <LocaleToggle class="drawer__lt" />
           <NuxtLink to="/get-involved" class="btn btn--green">{{ t('Get Involved', 'सहभागी बनें') }}</NuxtLink>
           <NuxtLink to="/get-involved/donate" class="btn btn--red">{{ t('Donate', 'दान करें') }}</NuxtLink>
           <NuxtLink to="/contact" class="btn btn--outline">{{ t('Contact', 'संपर्क') }}</NuxtLink>
@@ -127,6 +126,9 @@ const tileIcons = [
 /* Floating over the dark hero (homepage, before scroll) — light text */
 .hdr.is-over-dark .brand__word strong { color: #fff; }
 .hdr.is-over-dark .brand__word em { color: rgba(255,255,255,0.7); }
+.hdr.is-over-dark :deep(.lt) { border-color: rgba(255,255,255,0.45); }
+.hdr.is-over-dark :deep(.lt button) { color: rgba(255,255,255,0.85); }
+.hdr.is-over-dark :deep(.lt button.is-on) { background: #fff; color: var(--ink); }
 .hdr.is-over-dark .brand__mark { background: rgba(255,255,255,0.1); }
 .hdr.is-over-dark .nav__link { color: rgba(255,255,255,0.9); }
 .hdr.is-over-dark .nav__link:hover { color: var(--lime); }
@@ -146,15 +148,15 @@ const tileIcons = [
 
 /* Nav — match demo: dark Inter links, generous spacing, chevron carets */
 .nav__list { display: flex; align-items: center; gap: 2px; }
-.nav__link { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; font-family: var(--sans); font-weight: 600; font-size: 15.5px; color: var(--ink); padding: 8px 13px; border-radius: 8px; transition: color .2s, opacity .2s; position: relative; }
+.nav__link { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; font-family: var(--sans); font-weight: 600; font-size: 15px; color: var(--ink); padding: 8px 10px; border-radius: 8px; transition: color .2s, opacity .2s; position: relative; }
 .nav__link:hover { color: var(--green-700); }
 .nav__link.is-active { color: var(--red); }
 .nav__caret { opacity: 0.75; transition: transform .25s var(--ease); }
 .nav__item:hover .nav__caret { transform: rotate(180deg); }
 
-.hdr__actions { display: flex; align-items: center; gap: 16px; }
+.hdr__actions { display: flex; align-items: center; gap: 13px; }
 .hdr__contact { padding: 8px 4px; }
-.hdr__donate { padding: 14px 28px; font-size: 15px; white-space: nowrap; flex-shrink: 0; }
+.hdr__donate { padding: 13px 22px; font-size: 15px; white-space: nowrap; flex-shrink: 0; }
 
 /* Mega menu — icon tiles + featured campaign card (matches demo) */
 .mega { position: absolute; left: 0; right: 0; top: 100%; background: var(--cream); border-top: 1px solid var(--line); box-shadow: var(--shadow-md); }
@@ -182,27 +184,26 @@ const tileIcons = [
 .burger.is-open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
 /* Drawer */
-.drawer { position: fixed; top: 84px; left: 0; right: 0; bottom: 0; background: var(--cream); overflow-y: auto; padding: 12px var(--gutter) 32px; }
+.drawer { position: fixed; top: 84px; left: 0; right: 0; bottom: 0; z-index: 65; background: var(--cream); overflow-y: auto; padding: 12px var(--gutter) 32px; }
 .drawer__item { border-bottom: 1px solid var(--line); }
 .drawer__row { display: flex; align-items: center; justify-content: space-between; }
-.drawer__link { display: block; padding: 16px 0; font-family: var(--serif); font-size: 22px; color: var(--ink); flex: 1; }
+.drawer__link { display: block; padding: 13px 0; font-family: var(--serif); font-size: 17px; color: var(--ink); flex: 1; }
 .drawer__toggle { width: 44px; height: 44px; display: grid; place-items: center; color: var(--body); transition: transform .25s; }
 .drawer__toggle.is-open { transform: rotate(180deg); color: var(--red); }
 .drawer__sub { padding: 0 0 14px 4px; display: grid; gap: 2px; }
-.drawer__sub a { display: block; padding: 8px 0; font-weight: 600; color: var(--body); }
+.drawer__sub a { display: block; padding: 7px 0; font-weight: 600; font-size: 14px; color: var(--body); }
 .drawer__sub a:hover { color: var(--green); }
 .drawer__cta { display: grid; gap: 10px; margin-top: 24px; }
 
 .drawer-enter-active, .drawer-leave-active { transition: opacity .25s var(--ease); }
 .drawer-enter-from, .drawer-leave-to { opacity: 0; }
 
-@media (max-width: 1200px) {
-  .nav, .hdr__contact, .hdr__lt { display: none; }
+@media (max-width: 1300px) {
+  .nav, .hdr__contact { display: none; }
   .burger { display: block; }
 }
 .drawer__lt { justify-self: start; margin-bottom: 6px; }
 @media (max-width: 520px) {
   .hdr__donate { display: none; }
-  .brand__word em { display: none; }
 }
 </style>
